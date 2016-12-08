@@ -12,7 +12,7 @@ void WriteHelloWorldProgram(std::ostream& outstream) {
     << "#include <iostream>" << std::endl << std::endl
     << "int main()" << std::endl
     << "{" << std::endl
-    << "\tstd::cout << \"Hello, World!\" << std::endl;" << std::endl
+    << "\tstd::cout << \"Hello, World!\" << std::endl;" //<< std::endl
     << "\treturn 0;" << std::endl
     << "}" << std::endl << std::endl;
 }
