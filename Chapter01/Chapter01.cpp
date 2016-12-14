@@ -43,11 +43,11 @@ void TestScope1() {
 
 void TestScope2() {
   { const std::string s = "a string";
-  std::cout << s << std::endl;
 
     { const std::string s = "another string";
     std::cout << s << std::endl; }
     ;
+    std::cout << s << std::endl;
   }
 }
 
@@ -73,7 +73,7 @@ void AskNames(std::ostream& outStream, std::istream& inStream) {
 
 int main()
 {
-  AskNames(std::cout, std::cin);
+  TestScope2();
   return 0;
 }
 
