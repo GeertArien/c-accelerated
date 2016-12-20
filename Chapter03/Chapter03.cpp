@@ -8,13 +8,15 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <sstream>
+#include <iterator>
 
 using std::cin;     using std::setprecision;
 using std::cout;    using std::string;
 using std::endl;    using std::streamsize;
 using std::vector;  using std::sort;
 
-void StudentGradeAverage() {
+double StudentGradeAverage() {
   cout << "Please enter your name: ";
   string name;
   cin >> name;
@@ -37,13 +39,18 @@ void StudentGradeAverage() {
     sum += x;
   }
 
-  streamsize prec = cout.precision();
-  cout << "Your final grade is " << setprecision(3)
-    << 0.2 * midterm + 0.4 * final + 0.4 * sum / count
-    << setprecision(prec) << endl;
+  double result = 0.2 * midterm + 0.4 * final + 0.4 * sum / count;
+
+  return result;
 }
 
-int StudentGradeMedium() {
+void OuputGradeAverage(double grade) {
+  streamsize prec = cout.precision();
+  cout << "Your final grade is " << setprecision(3)
+    << grade << setprecision(prec) << endl;
+}
+
+int StudentGradeMedian(double& result) {
   cout << "Please enter your name: ";
   string name;
   cin >> name;
@@ -76,17 +83,101 @@ int StudentGradeMedium() {
   vector_size mid = size / 2;
   double median = size % 2 == 0 ? (homework[mid - 1] + homework[mid]) / 2 : homework[mid];
 
-  double result = 0.2 * midterm + 0.4 * final + 0.4 * median;
-
-  streamsize prec = cout.precision();
-  cout << "Your final grade is " << setprecision(3)
-    << result << setprecision(prec) << endl;
+  result = 0.2 * midterm + 0.4 * final + 0.4 * median;
   
   return 0;
 }
 
+void OuputGradeMedian(double grade) {
+  streamsize prec = cout.precision();
+  cout << "Your final grade is " << setprecision(3)
+    << grade << setprecision(prec) << endl;
+}
+
+int Quartiles(vector<int>& someInts)
+{
+  sort(someInts.begin(), someInts.end());
+
+  int quarter = someInts.size() / 4;
+  int remainder = someInts.size() % 4;
+
+  if (quarter == 0) {
+    cout << "Vector is smaller than 4 elements." << endl;
+    return 1;
+  }
+   
+  int start = someInts.size();
+
+  for (int i = 0; i < 4; i++, remainder--) {
+    std::stringstream result;
+    int quarterSize = remainder > 0 ? quarter + 1 : quarter;
+    int stop = start - quarterSize;
+    vector<int>::const_iterator first = someInts.begin() + stop;
+    vector<int>::const_iterator last = someInts.begin() + start;
+    std::copy(first, last, std::ostream_iterator<int>(result, " "));
+    cout << "Quarter " << std::to_string(i + 1) << ": " + result.str() << endl;
+    start -= quarterSize;
+  }
+
+  return 0;
+}
+
+int CountDistinctWord(vector<string> words) {
+
+  if (words.size() < 2) {
+    cout << "Please enter atleast 2 words." << endl;
+    return 1;
+  }
+
+  sort(words.begin(), words.end());
+
+  for (int i = 0, counter = 0; i < words.size(); i++) {
+    counter++;
+    if (i + 1 == words.size() || words[i] != words[i + 1]) {
+      cout << words[i] << ": " << counter << endl;
+      counter = 0;
+    }
+  }
+}
+
+int LongestShortestString(vector<string> words) {
+
+  if (words.size() < 1) {
+    cout << "Please enter atleast 1 words." << endl;
+    return 1;
+  }
+
+  int shortest, longest;
+  shortest = longest = words[0].size();
+
+  for (int i = 1; i < words.size(); i++) {
+    if (words[i].size() < shortest)
+      shortest = words[i].size();
+    if (words[i].size() > longest)
+      longest = words[i].size();
+  }
+
+  cout << "The shortest word is " << shortest << " characters long." << endl
+    << "The longest word is " << longest << " characters long." << endl;
+}
+
+vector<string> GetInput() {
+  string word;
+  vector<string> words;
+
+  cout << "Please enter some words:" << endl;
+
+  while (cin >> word) {
+    words.push_back(word);
+  }
+  
+  return words;
+}
+
 int main()
 {
-  return StudentGradeMedium();
+  vector<int> someInts = { 10, 12, 5, 8, 13, 25, 1, 121, 85, 99, 120, 180, 75, 205, 16, 22, 99, 16 };
+  
+  return LongestShortestString(GetInput());
 }
 
