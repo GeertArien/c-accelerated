@@ -16,9 +16,8 @@ using std::cout;    using std::string;
 using std::endl;    using std::streamsize;
 using std::vector;  using std::sort;
 
-double StudentGradeAverage() {
+int StudentGradeAverage(double& result, string& name) {
   cout << "Please enter your name: ";
-  string name;
   cin >> name;
   cout << "Hello, " << name << "!" << endl;
 
@@ -31,7 +30,6 @@ double StudentGradeAverage() {
 
   int count = 0;
   double sum = 0;
-
   double x;
 
   while (cin >> x) {
@@ -39,9 +37,11 @@ double StudentGradeAverage() {
     sum += x;
   }
 
-  double result = 0.2 * midterm + 0.4 * final + 0.4 * sum / count;
+  double homework = count == 0 ? 0 : sum / count;
 
-  return result;
+  result = 0.2 * midterm + 0.4 * final + 0.4 * homework;
+
+  return 0;
 }
 
 void OuputGradeAverage(double grade) {
@@ -50,9 +50,8 @@ void OuputGradeAverage(double grade) {
     << grade << setprecision(prec) << endl;
 }
 
-int StudentGradeMedian(double& result) {
+int StudentGradeMedian(double& result, string& name) {
   cout << "Please enter your name: ";
-  string name;
   cin >> name;
   cout << "Hello, " << name << "!" << endl;
 
@@ -131,13 +130,15 @@ int CountDistinctWord(vector<string> words) {
 
   sort(words.begin(), words.end());
 
-  for (int i = 0, counter = 0; i < words.size(); i++) {
+  for (vector<string>::size_type i = 0, counter = 0; i < words.size(); i++) {
     counter++;
     if (i + 1 == words.size() || words[i] != words[i + 1]) {
       cout << words[i] << ": " << counter << endl;
       counter = 0;
     }
   }
+
+  return 0;
 }
 
 int LongestShortestString(vector<string> words) {
@@ -147,10 +148,10 @@ int LongestShortestString(vector<string> words) {
     return 1;
   }
 
-  int shortest, longest;
+  vector<string>::size_type shortest, longest;
   shortest = longest = words[0].size();
 
-  for (int i = 1; i < words.size(); i++) {
+  for (vector<string>::size_type i = 1; i < words.size(); i++) {
     if (words[i].size() < shortest)
       shortest = words[i].size();
     if (words[i].size() > longest)
@@ -159,6 +160,8 @@ int LongestShortestString(vector<string> words) {
 
   cout << "The shortest word is " << shortest << " characters long." << endl
     << "The longest word is " << longest << " characters long." << endl;
+
+  return 0;
 }
 
 vector<string> GetInput() {
@@ -174,10 +177,39 @@ vector<string> GetInput() {
   return words;
 }
 
+int StudentNamesGrades() {
+  vector<string> names;
+  vector<double> grades;
+  string answer;
+  
+  do {
+    string name;
+    double grade;
+    if (StudentGradeAverage(grade, name))
+      return 1;
+
+    names.push_back(name);
+    grades.push_back(grade);
+
+    cout << "Enter (y)es if you want to enter more grades and students: ";
+    cin.clear();
+    cin >> answer;
+    cout << endl;
+  } while (answer.at(0) == 'y' || (answer.at(0) == 26 && answer.at(1) == 'y'));
+
+  for (vector<string>::size_type i = 0; i < names.size(); i++) {
+    cout << names[i] << ":" << endl;
+    OuputGradeAverage(grades[i]);
+    cout << endl;
+  }
+
+  return 0;
+}
+
 int main()
 {
   vector<int> someInts = { 10, 12, 5, 8, 13, 25, 1, 121, 85, 99, 120, 180, 75, 205, 16, 22, 99, 16 };
   
-  return LongestShortestString(GetInput());
+  return StudentNamesGrades();
 }
 
