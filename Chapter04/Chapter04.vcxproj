@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="grade.h" />
     <ClInclude Include="median.h" />
+    <ClInclude Include="number.h" />
     <ClInclude Include="square.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="student_info.h" />
@@ -157,6 +158,7 @@
     <ClCompile Include="Chapter04.cpp" />
     <ClCompile Include="grade.cpp" />
     <ClCompile Include="median.cpp" />
+    <ClCompile Include="number.cpp" />
     <ClCompile Include="square.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

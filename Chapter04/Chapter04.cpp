@@ -12,6 +12,8 @@
 #include "grade.h"
 #include "student_info.h"
 #include "square.h"
+#include "word.h"
+#include "number.h"
 
 using std::cin;           using std::setprecision;
 using std::cout;          using std::sort;
@@ -65,8 +67,28 @@ void test_double_squares(unsigned range) {
   print_squares(cout, v);
 }
 
+void test_word() {
+  vector<string> words;
+  read(cin, words);
+  cout << "Number of distinct words: " << count_distinct(words) << endl;
+  count_occurence(cout, words);
+}
+
+void test_number_average() {
+  vector<double> numbers = { 10.2, 15.7, 18.5, 9.7, 25.2 };
+
+  cout << average(numbers) << endl;
+}
+
+vector<double> f() {
+  return{ 10.2, 17.5 };
+}
+
 int main() {
-  test_double_squares(100);
+  int n = 1;
+  double d = f()[n]; // f() => return vector<double> met minstens n + 1 elementen
+
+  test_number_average();
 
   return 0;
 }
