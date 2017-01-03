@@ -4,7 +4,7 @@
 #include <algorithm>
 
 using std::vector;  using std::string;
-using std::max;
+using std::max;     using std::transform;
 
 vector<string> split(const string& s) {
   vector<string> ret;
@@ -86,4 +86,11 @@ vector<string> hcat(const vector<string>& left, const vector<string>& right) {
   }
 
   return ret;
+}
+
+bool compare_ignore_case(string s1, string s2) {
+  transform(s1.begin(), s1.end(), s1.begin(), ::tolower);
+  transform(s2.begin(), s2.end(), s2.begin(), ::tolower);
+
+  return s1 < s2;
 }

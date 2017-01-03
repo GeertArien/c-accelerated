@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "words.h"
+#include "permuted_index.h"
 
 #include <iostream>
 
@@ -47,10 +48,19 @@ void test_frame() {
     cout << *iter++ << endl;
 }
 
+void test_permuted_index() {
+  vector<string> v = { "The quick brown fox", "jumped over the fence" };
+  vector<string> permuted_v = permuted_index(v);
+
+  vector<string>::const_iterator iter = permuted_v.begin();
+
+  while (iter != permuted_v.end())
+    cout << *iter++ << endl;
+}
+
 int main()
 {
-  test_frame();
-  
+  test_permuted_index();
   return 0;
 }
 
