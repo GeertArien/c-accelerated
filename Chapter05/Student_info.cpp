@@ -109,3 +109,21 @@ list<Student_info> extract_fails(list<Student_info>& students) {
   }
   return fail;
 }
+
+vector<Student_info> extract_fails_v2(vector<Student_info>& students) {
+  vector<Student_info> fail;
+  vector<Student_info>::size_type s_size = students.size();
+  vector<Student_info>::size_type counter = 0;
+
+  for (vector<Student_info>::size_type i = 0; i < s_size; i++) {
+    if (fgrade(students[i])) {
+      fail.push_back(students[i]);
+    }
+    else
+      students[counter++] = students[i];
+  }
+
+  students.resize(counter);
+
+  return fail;
+}

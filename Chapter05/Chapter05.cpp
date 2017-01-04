@@ -54,6 +54,16 @@ void test_frame() {
     cout << *iter++ << endl;
 }
 
+void test_frame2() {
+  vector<string> v;
+  vector<string> v_framed = frame(v);
+
+  vector<string>::const_iterator iter = v_framed.begin();
+
+  while (iter != v_framed.end())
+    cout << *iter++ << endl;
+}
+
 void test_permuted_index() {
   vector<string> v = { "The quick brown fox", "jumped over the fence" };
   vector<string> permuted_v = permuted_index(v);
@@ -61,6 +71,16 @@ void test_permuted_index() {
   vector<string>::const_iterator iter = permuted_v.begin();
 
   while (iter != permuted_v.end())
+    cout << *iter++ << endl;
+}
+
+void test_center() {
+  vector<string> v = { "This is really great", "really", "super awesome", "awesomesauce" };
+  vector<string> centered_v = center(v);
+
+  vector<string>::const_iterator iter = centered_v.begin();
+
+  while (iter != centered_v.end())
     cout << *iter++ << endl;
 }
 
@@ -77,10 +97,19 @@ vector<Student_info> test_student_info(string file, vector<Student_info>& s) {
   infile.close();
   infile.clear();
 
+  vector<Student_info> s_copy = s;
+
   begin = std::chrono::steady_clock::now();
   failed = extract_fails(s);
   end = std::chrono::steady_clock::now();
   cout << "Microseconds to extract failed from " << file << " student vector = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << std::endl;
+
+  failed.clear();
+
+  begin = std::chrono::steady_clock::now();
+  failed = extract_fails_v2(s_copy);
+  end = std::chrono::steady_clock::now();
+  cout << "Microseconds to extract failed with resize method from " << file << " student vector = " << std::chrono::duration_cast<std::chrono::microseconds>(end - begin).count() << std::endl;
 
   return failed;
 }
@@ -124,9 +153,23 @@ void test_student_info() {
   test_student_info("10000");
 }
 
-int main()
-{
-  test_student_info();
-  return 0;
+void test_words_lower_upper() {
+  vector<string> words = { "TEST" , "test" , "mountain", "BIKE", "six", "seven", "EIGHT", "NINE", "ten" };
+  write_lower_upper(cout, words);
 }
 
+void test_palindromes() {
+  vector<string> words = { "TEST" , "teet" , "racecar", "BIKE", "six", "madam", "EIGHT", "reDder", "ten" };
+  write_palindromes(cout, words);
+}
+
+void test_ascender_descender() {
+  list<string> words = { "TEST" , "teet" , "racecar", "BIKE", "six", "madam", "EIGHT", "reDder", "ten", "multilangual" };
+  cout << longest_not_asc_desc(words) << endl;
+}
+
+int main()
+{
+  test_ascender_descender();
+  return 0;
+}
