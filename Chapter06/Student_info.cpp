@@ -3,6 +3,7 @@
 #include <iostream>
 #include <algorithm>
 #include <iterator>
+#include <sstream>
 
 #include "student_info.h"
 #include "grade.h"
@@ -15,9 +16,26 @@ using std::transform;     using std::back_inserter;
 using std::ostream;       using std::string;
 using std::remove_copy;   using std::remove_copy_if;
 using std::remove_if;     using std::stable_partition;
+using std::stringstream;
 
 bool compare(const Student_info& x, const Student_info& y) {
   return x.name < y.name;
+}
+
+istream& read(istream& is, vector<Student_info>& v) {
+  const int BUFFSIZE = 80;
+
+  stringstream ss;
+  char buff[BUFFSIZE];
+
+  while (is.getline(buff, BUFFSIZE)) {
+    ss << buff;
+    Student_info student;
+    read(ss, student);
+    v.push_back(student);
+  }
+
+  return is;
 }
 
 istream& read(istream& is, Student_info& s) {
@@ -48,25 +66,25 @@ bool did_all_hw(const Student_info& s) {
 
 double median_analysis(const vector<Student_info>& students) {
   vector<double> grades;
-
   transform(students.begin(), students.end(), back_inserter(grades), grade_aux);
-
   return median(grades);
 }
 
 double optimistic_median_analysis(const vector<Student_info>& students) {
   vector<double> grades;
-
   transform(students.begin(), students.end(), back_inserter(grades), optimistic_median);
-
   return median(grades);
 }
 
 double average_analysis(const vector<Student_info>& students) {
   vector<double> grades;
-
   transform(students.begin(), students.end(), back_inserter(grades), average_grade);
+  return median(grades);
+}
 
+double analysis(const vector<Student_info>& students, double method(const Student_info&)) {
+  vector<double> grades;
+  transform(students.begin(), students.end(), back_inserter(grades), method);
   return median(grades);
 }
 
@@ -98,6 +116,11 @@ double optimistic_median(const Student_info& s) {
 void write_analysis(ostream& out, const string& name, double analysis(const vector<Student_info>&),
   const vector<Student_info>& did, const vector<Student_info>& didnt) {
   out << name << ": median(did) = " << analysis(did) << ", median(didnt) = " << analysis(didnt) << endl;
+}
+
+void write_analysis(ostream& out, const string& name, double method(const Student_info&),
+  const vector<Student_info>& did, const vector<Student_info>& didnt) {
+  out << name << ": median(did) = " << analysis(did, method) << ", median(didnt) = " << analysis(didnt, method) << endl;
 }
 
 vector<Student_info> extract_fails(vector<Student_info>& students) {
