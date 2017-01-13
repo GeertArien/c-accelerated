@@ -124,15 +124,27 @@ void write_analysis(ostream& out, const string& name, double method(const Studen
 }
 
 vector<Student_info> extract_fails(vector<Student_info>& students) {
-  /*vector<Student_info> fail;
+  vector<Student_info> fail;
   remove_copy_if(students.begin(), students.end(), back_inserter(fail), pgrade);
-  students.erase(remove_if(students.begin(), students.end(), fgrade), students.end());*/
-
-  vector<Student_info>::iterator iter = stable_partition(students.begin(), students.end(), pgrade);
-  vector<Student_info> fail(iter, students.end());
-  students.erase(iter, students.end());
+  students.erase(remove_if(students.begin(), students.end(), fgrade), students.end());
 
   return fail;
+}
+
+vector<Student_info> extract_not_all_hw(vector<Student_info>& students) {
+  vector<Student_info>::iterator iter = stable_partition(students.begin(), students.end(), did_all_hw);
+  vector<Student_info> not_all_hw(iter, students.end());
+  students.erase(iter, students.end());
+
+  return not_all_hw;
+}
+
+vector<Student_info> extract(vector<Student_info>& students, bool criteria(const Student_info&)) {
+  vector<Student_info>::iterator iter = stable_partition(students.begin(), students.end(), criteria);
+  vector<Student_info> extracted(iter, students.end());
+  students.erase(iter, students.end());
+
+  return extracted;
 }
 
 bool fgrade(const Student_info& s) {

@@ -1,11 +1,12 @@
 #include "stdafx.h"
 
 #include <algorithm>
+#include <numeric>
 
 #include "words.h"
 
 using std::string;    using std::vector;
-using std::max;
+using std::max;       using std::accumulate;
 
 bool space(char c) {
   return isspace(c) != 0;
@@ -143,4 +144,9 @@ string::size_type width(const vector<string>& v) {
     maxlen = max(maxlen, it++->size());
 
   return maxlen;
+}
+
+string concat(const vector<string>& v) {
+  string s;
+  return accumulate(v.begin(), v.end(), s);
 }

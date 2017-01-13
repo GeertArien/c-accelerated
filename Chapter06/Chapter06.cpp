@@ -45,22 +45,15 @@ void test_frame() {
 }
 
 int test_grading_schemes(string file) {
-  vector<Student_info> all, did, didnt;
+  vector<Student_info> did, didnt;
   Student_info student;
 
   ifstream infile;
 
   infile.open(file);
-  read(infile, all);
+  read(infile, did);
 
-  vector<Student_info>::const_iterator iter = all.begin();
-
-  while (iter != all.end()) {
-    if (did_all_hw(*iter))
-      did.push_back(*iter++);
-    else
-      didnt.push_back(*iter++);
-  }
+  didnt = extract(did, did_all_hw);
 
   if (did.empty()) {
     cout << "No student did all the homework!" << endl;
@@ -79,9 +72,16 @@ int test_grading_schemes(string file) {
   return 0;
 }
 
+int test_string_concat() {
+  vector<string> v = { "one direction", "mama mia", "mamo testo", "lake district mall" };
+  cout << concat(v) << endl;
+  return 0;
+}
+
 int main()
 {
   test_grading_schemes("students10.txt");
+  test_string_concat();
   return 0;
 }
 
