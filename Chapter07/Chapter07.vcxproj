@@ -145,13 +145,18 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="grade.h" />
+    <ClInclude Include="median.h" />
     <ClInclude Include="numbers.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="student_info.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="words.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Chapter07.cpp" />
+    <ClCompile Include="grade.cpp" />
+    <ClCompile Include="median.cpp" />
     <ClCompile Include="numbers.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -159,6 +164,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Student_info.cpp" />
     <ClCompile Include="words.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

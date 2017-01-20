@@ -7,14 +7,18 @@
 #include <vector>
 #include <algorithm>
 #include <exception>
+#include <iterator>
 
 #include "numbers.h"
 
-using std::string;    using std::map;
-using std::istream;   using std::ostream;
-using std::endl;      using std::vector;
-using std::find_if;   using std::getline;
-using std::logic_error;
+using std::string;      using std::map;
+using std::istream;     using std::ostream;
+using std::endl;        using std::vector;
+using std::find_if;     using std::getline;
+using std::logic_error; using std::pair;
+using std::multimap;    using std::transform;
+using std::inserter;    using std::sort;
+using std::distance;    using std::unique;
 
 istream& count_words(istream& is, ostream& os) {
   string s;
@@ -27,6 +31,26 @@ istream& count_words(istream& is, ostream& os) {
     os << it->first << "\t" << it->second << endl;
 
   return is;
+}
+
+istream& count_sort_words(istream& is, ostream& os) {
+  string s;
+  map<string, int> counters;
+
+  while (is >> s)
+    ++counters[s];
+
+  multimap<int, string> counters_r;
+  transform(counters.begin(), counters.end(), inserter(counters_r, counters_r.begin()), flip_count_pair);
+
+  for (multimap<int, string>::const_iterator it = counters_r.begin(); it != counters_r.end(); ++it)
+    os << it->second << "\t" << it->first << endl;
+
+  return is;
+}
+
+pair<int, string> flip_count_pair(pair<string, int> p) {
+  return pair<int, string>(p.second, p.first);
 }
 
 map<string, vector<int> > xref(istream& in, vector<string> find_words(const string&)) {
@@ -42,6 +66,9 @@ map<string, vector<int> > xref(istream& in, vector<string> find_words(const stri
     for (vector<string>::const_iterator it = words.begin(); it != words.end(); ++it)
       ret[*it].push_back(line_number);
   }
+
+  for (map<string, vector<int> >::iterator it = ret.begin(); it != ret.end(); ++it)
+    it->second.resize(distance(it->second.begin(), unique(it->second.begin(), it->second.end())));
 
   return ret;
 }
