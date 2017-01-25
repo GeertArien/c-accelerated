@@ -145,6 +145,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="7_1.h" />
+    <ClInclude Include="7_2.h" />
+    <ClInclude Include="7_3.h" />
+    <ClInclude Include="7_4.h" />
     <ClInclude Include="grade.h" />
     <ClInclude Include="median.h" />
     <ClInclude Include="numbers.h" />
@@ -154,6 +158,10 @@
     <ClInclude Include="words.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="7_1.cpp" />
+    <ClCompile Include="7_2.cpp" />
+    <ClCompile Include="7_3.cpp" />
+    <ClCompile Include="7_4.cpp" />
     <ClCompile Include="Chapter07.cpp" />
     <ClCompile Include="grade.cpp" />
     <ClCompile Include="median.cpp" />
