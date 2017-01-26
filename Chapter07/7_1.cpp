@@ -20,6 +20,7 @@ using std::string;
 
 #include <map>
 using std::map;     using std::multimap;
+using std::pair; 
 
 #include <algorithm>
 using std::transform;
@@ -28,6 +29,10 @@ using std::transform;
 using std::inserter;
 
 #include "words.h"
+
+pair<int, string> flip_count_pair(pair<string, int> p) {
+  return pair<int, string>(p.second, p.first);
+}
 
 istream& count_sort_words(istream& is, ostream& os)
 {

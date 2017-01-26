@@ -3,26 +3,18 @@
 
 #include <string>
 #include <map>
-#include <list>
 #include <istream>
 #include <vector>
 #include <algorithm>
 #include <exception>
-#include <iterator>
 
 #include "numbers.h"
 
-using std::string;      using std::map;
-using std::istream;     using std::ostream;
-using std::endl;        using std::vector;
-using std::find_if;     using std::getline;
-using std::logic_error; using std::pair;
-using std::multimap;    using std::transform;
-using std::inserter;    using std::sort;
-using std::distance;    using std::unique;
-using std::list;        using std::copy;
-using std::back_inserter;
-using std::front_inserter;
+using std::string;    using std::map;
+using std::istream;   using std::ostream;
+using std::endl;      using std::vector;
+using std::find_if;   using std::getline;
+using std::logic_error;
 
 istream& count_words(istream& is, ostream& os) {
   string s;
@@ -35,10 +27,6 @@ istream& count_words(istream& is, ostream& os) {
     os << it->first << "\t" << it->second << endl;
 
   return is;
-}
-
-pair<int, string> flip_count_pair(pair<string, int> p) {
-  return pair<int, string>(p.second, p.first);
 }
 
 map<string, vector<int> > xref(istream& in, vector<string> find_words(const string&)) {
@@ -76,14 +64,6 @@ vector<string> split(const string& str) {
   return ret;
 }
 
-list<string> split_l(const string& str) {
-  vector<string> ret = split(str);
-  list <string> list;
-  copy(ret.begin(), ret.end(), back_inserter(list));
-  
-  return list;
-}
-
 bool space(char c) {
   return isspace(c) != 0;
 }
@@ -101,56 +81,24 @@ Grammar read_grammar(istream& in) {
   string line;
 
   while (getline(in, line)) {
-    list<string> entry = split_l(line);
+    vector<string> entry = split(line);
 
     if (!entry.empty())
-      ret[entry.front()].push_back(Rule(++entry.begin(), entry.end()));
+      ret[entry[0]].push_back(Rule(entry.begin() + 1, entry.end()));
   }
 
   return ret;
 }
 
-list<string> gen_sentence(const Grammar& g) {
-  list<string> ret;
+vector<string> gen_sentence(const Grammar& g) {
+  vector<string> ret;
   gen_aux(g, "<sentence>", ret);
 
   return ret;
 }
 
-vector<string> gen_sentence_v2(const Grammar& g) {
-  vector<string> ret;
-  vector<string> rules;
+void gen_aux(const Grammar& g, const string& word, vector<string>& ret) {
 
-  rules.push_back("<sentence>");
-
-  while (!rules.empty()) {
-
-    string segment = rules.back();
-    rules.pop_back();
-
-    if (!bracketed(segment))
-      ret.push_back(segment);
-    else {
-
-      Grammar::const_iterator it = g.find(segment);
-
-      if (it == g.end())
-        throw logic_error("empty rule");
-
-      const Rule_collection& c = it->second;
-
-      const Rule& r = c[nrand(c.size())];
-
-      for (Rule::const_reverse_iterator i = r.rbegin(); i != r.rend(); ++i)
-        rules.push_back(*i);
-    }
-  }
-
-  return ret;
-}
-
-void gen_aux(const Grammar& g, const string& word, list<string>& ret) {
-  
   if (!bracketed(word))
     ret.push_back(word);
   else {
