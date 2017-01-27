@@ -12,11 +12,13 @@ Using associative containers.
 #include "7_4.h"
 #include "7_5.h"
 #include "7_6.h"
+#include "7_7.h"
+#include "7_8.h"
+#include "7_9.h"
 
 int main()
 {
-  ex7_6();
+  ex7_9();
 
   return 0;
 }
-
