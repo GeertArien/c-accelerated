@@ -7,11 +7,13 @@ using std::cout;          using std::cin;
 using std::endl;
 using std::istream;       using std::vector;
 
-bool compare(const Student_info& x, const Student_info& y) {
+bool compare(const Student_info& x, const Student_info& y) 
+{
   return x.name < y.name;
 }
 
-istream& read(istream& is, Student_info& s) {
+istream& read(istream& is, Student_info& s)
+{
   double midterm, final;
   vector<double> homework;
 
@@ -24,9 +26,11 @@ istream& read(istream& is, Student_info& s) {
   return is;
 }
 
-istream& read_hw(istream& is, vector<double>& hw) {
+istream& read_hw(istream& is, vector<double>& hw) 
+{
 
-  if (is) {
+  if (is) 
+  {
     is.clear();
 
     double x;

@@ -6,8 +6,8 @@
 
 using std::domain_error;
 
-int nrand(int n) {
-
+int nrand(int n)
+{
   if (n <= 0 || n > RAND_MAX)
     throw domain_error("Argument to nrand is out of range");
 

@@ -6,7 +6,8 @@
 
 using std::domain_error;  using std::sort;  using std::vector;
 
-double median(vector<double> vec) {
+double median(vector<double> vec) 
+{
   typedef vector<double>::size_type vec_sz;
 
   vec_sz size = vec.size();

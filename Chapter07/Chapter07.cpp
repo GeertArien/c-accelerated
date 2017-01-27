@@ -18,7 +18,5 @@ Using associative containers.
 
 int main()
 {
-  ex7_9();
-
-  return 0;
+  return ex7_9();
 }

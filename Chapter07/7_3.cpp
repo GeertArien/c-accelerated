@@ -38,12 +38,14 @@ using std::unique;
 
 #include "words.h"
 
-map<string, vector<int> > xref_unique(istream& in, vector<string> find_words(const string&)) {
+map<string, vector<int> > xref_unique(istream& in, vector<string> find_words(const string&)) 
+{
   string line;
   int line_number = 0;
   map<string, vector<int> > ret;
 
-  while (getline(in, line)) {
+  while (getline(in, line)) 
+  {
     ++line_number;
 
     vector<string> words = find_words(line);

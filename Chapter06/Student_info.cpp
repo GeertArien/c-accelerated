@@ -18,17 +18,20 @@ using std::remove_copy;   using std::remove_copy_if;
 using std::remove_if;     using std::stable_partition;
 using std::stringstream;
 
-bool compare(const Student_info& x, const Student_info& y) {
+bool compare(const Student_info& x, const Student_info& y) 
+{
   return x.name < y.name;
 }
 
-istream& read(istream& is, vector<Student_info>& v) {
+istream& read(istream& is, vector<Student_info>& v) 
+{
   const int BUFFSIZE = 80;
 
   stringstream ss;
   char buff[BUFFSIZE];
 
-  while (is.getline(buff, BUFFSIZE)) {
+  while (is.getline(buff, BUFFSIZE))
+  {
     ss << buff;
     Student_info student;
     read(ss, student);
@@ -38,16 +41,18 @@ istream& read(istream& is, vector<Student_info>& v) {
   return is;
 }
 
-istream& read(istream& is, Student_info& s) {
+istream& read(istream& is, Student_info& s) 
+{
   is >> s.name >> s.midterm >> s.final;
   read_hw(is, s.homework);
 
   return is;
 }
 
-istream& read_hw(istream& is, vector<double>& hw) {
-
-  if (is) {
+istream& read_hw(istream& is, vector<double>& hw) 
+{
+  if (is)
+  {
     is.clear();
 
     double x;
@@ -60,49 +65,47 @@ istream& read_hw(istream& is, vector<double>& hw) {
   return is;
 }
 
-bool did_all_hw(const Student_info& s) {
+bool did_all_hw(const Student_info& s) 
+{
   return ((find(s.homework.begin(), s.homework.end(), 0)) == s.homework.end());
 }
 
-double median_analysis(const vector<Student_info>& students) {
+double median_analysis(const vector<Student_info>& students)
+{
   vector<double> grades;
   transform(students.begin(), students.end(), back_inserter(grades), grade_aux);
   return median(grades);
 }
 
-double optimistic_median_analysis(const vector<Student_info>& students) {
-  vector<double> grades;
-  transform(students.begin(), students.end(), back_inserter(grades), optimistic_median);
-  return median(grades);
-}
-
-double average_analysis(const vector<Student_info>& students) {
+double average_analysis(const vector<Student_info>& students) 
+{
   vector<double> grades;
   transform(students.begin(), students.end(), back_inserter(grades), average_grade);
   return median(grades);
 }
 
-double analysis(const vector<Student_info>& students, double method(const Student_info&)) {
-  vector<double> grades;
-  transform(students.begin(), students.end(), back_inserter(grades), method);
-  return median(grades);
-}
 
-double grade_aux(const Student_info& s) {
+
+double grade_aux(const Student_info& s) 
+{
   
-  try {
+  try 
+  {
     return grade(s);
   }
-  catch (domain_error) {
+  catch (domain_error)
+  {
     return grade(s.midterm, s.final, 0);
   }
 }
 
-double average_grade(const Student_info& s) {
+double average_grade(const Student_info& s)
+{
   return grade(s.midterm, s.final, average(s.homework));
 }
 
-double optimistic_median(const Student_info& s) {
+double optimistic_median(const Student_info& s)
+{
   vector<double> nonzero;
 
   remove_copy(s.homework.begin(), s.homework.end(), back_inserter(nonzero), 0);
@@ -114,16 +117,13 @@ double optimistic_median(const Student_info& s) {
 }
 
 void write_analysis(ostream& out, const string& name, double analysis(const vector<Student_info>&),
-  const vector<Student_info>& did, const vector<Student_info>& didnt) {
+  const vector<Student_info>& did, const vector<Student_info>& didnt)
+{
   out << name << ": median(did) = " << analysis(did) << ", median(didnt) = " << analysis(didnt) << endl;
 }
 
-void write_analysis(ostream& out, const string& name, double method(const Student_info&),
-  const vector<Student_info>& did, const vector<Student_info>& didnt) {
-  out << name << ": median(did) = " << analysis(did, method) << ", median(didnt) = " << analysis(didnt, method) << endl;
-}
-
-vector<Student_info> extract_fails(vector<Student_info>& students) {
+vector<Student_info> extract_fails(vector<Student_info>& students)
+{
   vector<Student_info> fail;
   remove_copy_if(students.begin(), students.end(), back_inserter(fail), pgrade);
   students.erase(remove_if(students.begin(), students.end(), fgrade), students.end());
@@ -131,26 +131,12 @@ vector<Student_info> extract_fails(vector<Student_info>& students) {
   return fail;
 }
 
-vector<Student_info> extract_not_all_hw(vector<Student_info>& students) {
-  vector<Student_info>::iterator iter = stable_partition(students.begin(), students.end(), did_all_hw);
-  vector<Student_info> not_all_hw(iter, students.end());
-  students.erase(iter, students.end());
-
-  return not_all_hw;
-}
-
-vector<Student_info> extract(vector<Student_info>& students, bool criteria(const Student_info&)) {
-  vector<Student_info>::iterator iter = stable_partition(students.begin(), students.end(), criteria);
-  vector<Student_info> extracted(iter, students.end());
-  students.erase(iter, students.end());
-
-  return extracted;
-}
-
-bool fgrade(const Student_info& s) {
+bool fgrade(const Student_info& s) 
+{
   return grade(s) < 60;
 }
 
-bool pgrade(const Student_info& s) {
+bool pgrade(const Student_info& s) 
+{
   return !fgrade(s);
 }

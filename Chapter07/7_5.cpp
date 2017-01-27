@@ -63,7 +63,6 @@ Grammar read_grammar_list(istream& in)
 
 void gen_aux(const Grammar& g, const string& word, list<string>& ret)
 {
-
   if (!bracketed(word))
     ret.push_back(word);
   else

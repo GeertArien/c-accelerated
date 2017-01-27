@@ -30,7 +30,8 @@ using std::inserter;
 
 #include "words.h"
 
-pair<int, string> flip_count_pair(pair<string, int> p) {
+pair<int, string> flip_count_pair(pair<string, int> p) 
+{
   return pair<int, string>(p.second, p.first);
 }
 
@@ -51,8 +52,8 @@ istream& count_sort_words(istream& is, ostream& os)
   return is;
 }
 
-int ex7_1() {
-
+int ex7_1()
+{
   if (count_sort_words(cin, cout))
     return 0;
   else
