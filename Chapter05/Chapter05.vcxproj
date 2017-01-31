@@ -145,19 +145,41 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="5_0.h" />
+    <ClInclude Include="5_1.h" />
+    <ClInclude Include="5_10.h" />
+    <ClInclude Include="5_11.h" />
+    <ClInclude Include="5_2.h" />
+    <ClInclude Include="5_3.h" />
+    <ClInclude Include="5_4.h" />
+    <ClInclude Include="5_5.h" />
+    <ClInclude Include="5_6.h" />
+    <ClInclude Include="5_7.h" />
+    <ClInclude Include="5_8.h" />
+    <ClInclude Include="5_9.h" />
     <ClInclude Include="grade.h" />
     <ClInclude Include="median.h" />
-    <ClInclude Include="permuted_index.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="student_info.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="words.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="5_0.cpp" />
+    <ClCompile Include="5_1.cpp" />
+    <ClCompile Include="5_10.cpp" />
+    <ClCompile Include="5_11.cpp" />
+    <ClCompile Include="5_2.cpp" />
+    <ClCompile Include="5_3.cpp" />
+    <ClCompile Include="5_4.cpp" />
+    <ClCompile Include="5_5.cpp" />
+    <ClCompile Include="5_6.cpp" />
+    <ClCompile Include="5_7.cpp" />
+    <ClCompile Include="5_8.cpp" />
+    <ClCompile Include="5_9.cpp" />
     <ClCompile Include="Chapter05.cpp" />
     <ClCompile Include="grade.cpp" />
     <ClCompile Include="median.cpp" />
-    <ClCompile Include="permuted_index.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

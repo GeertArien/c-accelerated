@@ -84,8 +84,6 @@ double average_analysis(const vector<Student_info>& students)
   return median(grades);
 }
 
-
-
 double grade_aux(const Student_info& s) 
 {
   

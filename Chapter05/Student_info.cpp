@@ -12,11 +12,13 @@ using std::endl;          using std::list;
 using std::istream;       using std::vector;
 using std::stringstream;
 
-bool compare(const Student_info& x, const Student_info& y) {
+bool compare(const Student_info& x, const Student_info& y) 
+{
   return x.name < y.name;
 }
 
-istream& read(istream& is, Student_info& s) {
+istream& read(istream& is, Student_info& s) 
+{
   double midterm, final;
   vector<double> homework;
 
@@ -29,13 +31,15 @@ istream& read(istream& is, Student_info& s) {
   return is;
 }
 
-istream& read(istream& is, vector<Student_info>& v) {
+istream& read(istream& is, vector<Student_info>& v) 
+{
   const int BUFFSIZE = 80;
 
   stringstream ss;
   char buff[BUFFSIZE];
 
-  while (is.getline(buff, BUFFSIZE)) {
+  while (is.getline(buff, BUFFSIZE))
+  {
     ss << buff;
     Student_info student;
     read(ss, student);
@@ -45,13 +49,15 @@ istream& read(istream& is, vector<Student_info>& v) {
   return is;
 }
 
-istream& read(istream& is, list<Student_info>& l) {
+istream& read(istream& is, list<Student_info>& l) 
+{
   const int BUFFSIZE = 80;
 
   stringstream ss;
   char buff[BUFFSIZE];
 
-  while (is.getline(buff, BUFFSIZE)) {
+  while (is.getline(buff, BUFFSIZE)) 
+  {
     ss << buff;
     Student_info student;
     read(ss, student);
@@ -61,9 +67,11 @@ istream& read(istream& is, list<Student_info>& l) {
   return is;
 }
 
-istream& read_hw(istream& is, vector<double>& hw) {
+istream& read_hw(istream& is, vector<double>& hw) 
+{
 
-  if (is) {
+  if (is) 
+  {
     is.clear();
 
     double x;
@@ -76,16 +84,20 @@ istream& read_hw(istream& is, vector<double>& hw) {
   return is;
 }
 
-bool fgrade(const Student_info& s) {
+bool fgrade(const Student_info& s) 
+{
   return grade(s) < 60;
 }
 
-vector<Student_info> extract_fails(vector<Student_info>& students) {
+vector<Student_info> extract_fails(vector<Student_info>& students)
+{
   vector<Student_info> fail;
   vector<Student_info>::iterator iter = students.begin();
 
-  while (iter != students.end()) {
-    if (fgrade(*iter)) {
+  while (iter != students.end()) 
+  {
+    if (fgrade(*iter)) 
+    {
       fail.push_back(*iter);
       iter = students.erase(iter);
     }
@@ -95,35 +107,20 @@ vector<Student_info> extract_fails(vector<Student_info>& students) {
   return fail;
 }
 
-list<Student_info> extract_fails(list<Student_info>& students) {
+list<Student_info> extract_fails(list<Student_info>& students)
+{
   list<Student_info> fail;
   list<Student_info>::iterator iter = students.begin();
 
-  while (iter != students.end()) {
-    if (fgrade(*iter)) {
+  while (iter != students.end())
+  {
+    if (fgrade(*iter))
+    {
       fail.push_back(*iter);
       iter = students.erase(iter);
     }
     else
       ++iter;
   }
-  return fail;
-}
-
-vector<Student_info> extract_fails_v2(vector<Student_info>& students) {
-  vector<Student_info> fail;
-  vector<Student_info>::size_type s_size = students.size();
-  vector<Student_info>::size_type counter = 0;
-
-  for (vector<Student_info>::size_type i = 0; i < s_size; i++) {
-    if (fgrade(students[i])) {
-      fail.push_back(students[i]);
-    }
-    else
-      students[counter++] = students[i];
-  }
-
-  students.resize(counter);
-
   return fail;
 }
