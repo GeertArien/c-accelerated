@@ -18,5 +18,5 @@ double grade(double midterm, double final, const std::vector<double>& hw) {
 }
 
 double grade(const Student_info& s) {
-  return s.grade;
+  return grade(s.midterm, s.final, s.homework);
 }

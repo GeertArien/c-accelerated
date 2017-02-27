@@ -88,6 +88,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,21 +146,34 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="4_0.h" />
+    <ClInclude Include="4_1.h" />
+    <ClInclude Include="4_2.h" />
+    <ClInclude Include="4_3.h" />
+    <ClInclude Include="4_4.h" />
+    <ClInclude Include="4_5.h" />
+    <ClInclude Include="4_6.h" />
+    <ClInclude Include="4_7.h" />
+    <ClInclude Include="4_8.h" />
     <ClInclude Include="grade.h" />
     <ClInclude Include="median.h" />
-    <ClInclude Include="number.h" />
-    <ClInclude Include="square.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="student_info.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="word.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="4_0.cpp" />
+    <ClCompile Include="4_1.cpp" />
+    <ClCompile Include="4_2.cpp" />
+    <ClCompile Include="4_3.cpp" />
+    <ClCompile Include="4_4.cpp" />
+    <ClCompile Include="4_5.cpp" />
+    <ClCompile Include="4_6.cpp" />
+    <ClCompile Include="4_7.cpp" />
+    <ClCompile Include="4_8.cpp" />
     <ClCompile Include="Chapter04.cpp" />
     <ClCompile Include="grade.cpp" />
     <ClCompile Include="median.cpp" />
-    <ClCompile Include="number.cpp" />
-    <ClCompile Include="square.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -167,7 +181,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Student_info.cpp" />
-    <ClCompile Include="word.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
