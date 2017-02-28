@@ -145,10 +145,22 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="3_0.h" />
+    <ClInclude Include="3_2.h" />
+    <ClInclude Include="3_3.h" />
+    <ClInclude Include="3_4.h" />
+    <ClInclude Include="3_5.h" />
+    <ClInclude Include="3_6.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="3_0.cpp" />
+    <ClCompile Include="3_2.cpp" />
+    <ClCompile Include="3_3.cpp" />
+    <ClCompile Include="3_4.cpp" />
+    <ClCompile Include="3_5.cpp" />
+    <ClCompile Include="3_6.cpp" />
     <ClCompile Include="Chapter03.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
