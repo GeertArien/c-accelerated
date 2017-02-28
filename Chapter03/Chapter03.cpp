@@ -15,6 +15,6 @@ Working with batches of data.
 
 int main()
 {
-  ex3_0();
+  ex3_6();
 }
 
