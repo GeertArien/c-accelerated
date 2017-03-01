@@ -1,55 +1,24 @@
- A small C++ program
+/**
+Accelerated C++, Chapter 0, Chapter0.cpp
+
+Getting started.
+*/
 
 #include "stdafx.h"
-#include <iostream>
 
-void WriteHelloWorld(std::ostream& outstream) {
-  outstream << "Hello, World!" << std::endl;
-}
-
-void WriteHelloWorldProgram(std::ostream& outstream) {
-  outstream << "// A small C++ program" << std::endl << std::endl
-    << "#include <iostream>" << std::endl << std::endl
-    << "int main()" << std::endl
-    << "{" << std::endl
-    << "\tstd::cout << \"Hello, World!\" << std::endl;" //<< std::endl
-    << "\treturn 0;" << std::endl
-    << "}" << std::endl << std::endl;
-}
-
-void WriteQuoteBackslash(std::ostream& outstream) {
-  outstream << "This (\") is a quote, and this (\\) is a backslash." << std::endl;
-}
-
-void TestTabs(std::ostream& outstream) {
-  outstream << "this is a tab \t test." << std::endl
-            << "\t tab" << std::endl
-            << "\t tab \t test." << std::endl;
-}
-
-int
-SplitHelloWorld
-(
-)
-{
-  std
-    ::
-    cout
-    <<
-    "Hello, world!"
-    <<
-    std
-    ::
-    endl
-    ;
-  return
-    0
-    ;
-}
+#include "0_0.h"
+#include "0_1.h"
+#include "0_2.h"
+#include "0_3.h"
+#include "0_4.h"
+#include "0_5.h"
+#include "0_6.h"
+#include "0_7.h"
+#include "0_8.h"
+#include "0_9.h"
+#include "0_10.h"
 
 int main()
 {
-  SplitHelloWorld();
-  WriteHelloWorldProgram(std::cout);
-  return 0;
+  ex0_10();
 }

@@ -145,10 +145,32 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="0_0.h" />
+    <ClInclude Include="0_1.h" />
+    <ClInclude Include="0_10.h" />
+    <ClInclude Include="0_2.h" />
+    <ClInclude Include="0_3.h" />
+    <ClInclude Include="0_4.h" />
+    <ClInclude Include="0_5.h" />
+    <ClInclude Include="0_6.h" />
+    <ClInclude Include="0_7.h" />
+    <ClInclude Include="0_8.h" />
+    <ClInclude Include="0_9.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="0_0.cpp" />
+    <ClCompile Include="0_1.cpp" />
+    <ClCompile Include="0_10.cpp" />
+    <ClCompile Include="0_2.cpp" />
+    <ClCompile Include="0_3.cpp" />
+    <ClCompile Include="0_4.cpp" />
+    <ClCompile Include="0_5.cpp" />
+    <ClCompile Include="0_6.cpp" />
+    <ClCompile Include="0_7.cpp" />
+    <ClCompile Include="0_8.cpp" />
+    <ClCompile Include="0_9.cpp" />
     <ClCompile Include="Chapter0.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
