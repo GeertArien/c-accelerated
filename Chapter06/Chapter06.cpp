@@ -6,6 +6,7 @@ Using library algorithms.
 
 #include "stdafx.h"
 
+#include "6_0.h"
 #include "6_1.h"
 #include "6_2.h"
 #include "6_3.h"

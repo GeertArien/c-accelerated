@@ -145,6 +145,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="7_0.h" />
     <ClInclude Include="7_1.h" />
     <ClInclude Include="7_2.h" />
     <ClInclude Include="7_3.h" />
@@ -163,6 +164,7 @@
     <ClInclude Include="words.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="7_0.cpp" />
     <ClCompile Include="7_1.cpp" />
     <ClCompile Include="7_2.cpp" />
     <ClCompile Include="7_3.cpp" />

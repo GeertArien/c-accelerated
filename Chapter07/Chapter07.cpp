@@ -6,6 +6,7 @@ Using associative containers.
 
 #include "stdafx.h"
 
+#include "7_0.h"
 #include "7_1.h"
 #include "7_2.h"
 #include "7_3.h"
