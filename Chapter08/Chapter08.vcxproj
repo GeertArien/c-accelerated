@@ -146,20 +146,28 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="8_0.h" />
-    <ClInclude Include="median.h" />
+    <ClInclude Include="8_1.h" />
+    <ClInclude Include="8_2.h" />
+    <ClInclude Include="grade.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="student_info.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="vec.h" />
     <ClInclude Include="words.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="8_0.cpp" />
+    <ClCompile Include="8_1.cpp" />
+    <ClCompile Include="8_2.cpp" />
     <ClCompile Include="Chapter08.cpp" />
+    <ClCompile Include="grade.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="student_info.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

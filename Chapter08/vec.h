@@ -1,9 +1,10 @@
-#ifndef GUARD_median_H
-#define GUARD_median_H
+#ifndef GUARD_vec_H
+#define GUARD_vec_H
 
 #include <vector>
 #include <exception>
 #include <algorithm>
+#include <numeric>
 
 template<class T>
 T median(std::vector<T> v)
@@ -18,4 +19,10 @@ T median(std::vector<T> v)
   return size % 2 == 0 ? (v[mid] + v[mid - 1]) / 2 : v[mid];
 }
 
-#endif // !GUARD_median_H
+inline
+double average(const std::vector<double>& v)
+{
+  return std::accumulate(v.begin(), v.end(), 0.0) / v.size();
+}
+
+#endif // !GUARD_vec_H

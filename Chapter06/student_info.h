@@ -5,7 +5,8 @@
 #include <vector>
 #include <iostream>
 
-struct Student_info {
+struct Student_info 
+{
   std::string name;
   std::vector<double> homework;
   double midterm;

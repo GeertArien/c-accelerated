@@ -27,7 +27,7 @@ using std::istream_iterator;
 using std::ostream_iterator;
 using std::back_inserter;
 
-#include "median.h"
+#include "vec.h"
 #include "words.h"
 
 int test_split()
