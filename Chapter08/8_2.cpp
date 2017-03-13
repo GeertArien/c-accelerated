@@ -35,6 +35,7 @@ using std::string;
 using std::domain_error;
 
 #include <iterator>
+using std::back_inserter;
 
 template <class X>
 string print_vector(const vector<X>vec)
@@ -54,6 +55,11 @@ string print_vector(const vector<X>vec)
   return ss.str();
 }
 
+bool is_40(int x)
+{
+  return x == 40;
+}
+
 int ex8_2()
 {
   vector<int> vec1 = { 10, 25, 35, 40, 50 };
@@ -65,7 +71,20 @@ int ex8_2()
   cout << "Is " << print_vector(vec1) << " equal to " << print_vector(vec3)
     << " ? " << algorithms::equal(vec1.begin(), vec1.end(), vec3.begin()) << endl;
 
+  vector<int> vec4 = { 35, 40 };
+  cout << "Search " << print_vector(vec4) << " in " << print_vector(vec2) << " => "
+    << *algorithms::search(vec2.begin(), vec2.end(), vec4.begin(), vec4.end()) << endl;
+
   cout << "Find 35 in " << print_vector(vec1) << " => " << *algorithms::find(vec1.begin(), vec1.end(), 35) << endl;
+
+  cout << "Find if 40 in " << print_vector(vec1) << " => " << *algorithms::find_if(vec1.begin(), vec1.end(), is_40) << endl;
+
+  vector<int> vec5 = { 10, 20 };
+  cout << "Copy " << print_vector(vec1) << " into " << print_vector(vec5) << " => ";
+  algorithms::copy(vec1.begin(), vec1.end(), back_inserter(vec5));
+  cout << print_vector(vec5) << endl;
+
+  
 
   return 0;
 }
