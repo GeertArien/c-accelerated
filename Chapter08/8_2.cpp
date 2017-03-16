@@ -37,27 +37,43 @@ using std::domain_error;
 #include <iterator>
 using std::back_inserter;
 
-template <class X>
-string print_vector(const vector<X>vec)
+template <class In>
+string print_vector(In b, In e)
 {
-  if (vec.size() <= 0)
-    throw domain_error("Empty vector");
+  if (b == e)
+    throw domain_error("Empty range");
 
   stringstream ss;
 
-  ss << "[ " << vec[0];
-  
-  for (vector<X>::size_type i = 1; i < vec.size(); i++)
-    ss << ", " << vec[i];
+  ss << "[ " << *b++;
+
+  while (b != e)
+    ss << ", " << *b++;
 
   ss << " ]";
 
   return ss.str();
 }
 
+template <class X>
+string print_vector(const vector<X>vec)
+{
+  return print_vector(vec.begin(), vec.end());
+}
+
 bool is_40(int x)
 {
   return x == 40;
+}
+
+int minus_5(int x)
+{
+  return x - 5;
+}
+
+bool divisible_10(int x)
+{
+  return x % 10 == 0;
 }
 
 int ex8_2()
@@ -69,22 +85,45 @@ int ex8_2()
   cout << "Is " << print_vector(vec1) << " equal to " << print_vector(vec2)
     << " ? " << algorithms::equal(vec1.begin(), vec1.end(), vec2.begin()) << endl;
   cout << "Is " << print_vector(vec1) << " equal to " << print_vector(vec3)
-    << " ? " << algorithms::equal(vec1.begin(), vec1.end(), vec3.begin()) << endl;
+    << " ? " << algorithms::equal(vec1.begin(), vec1.end(), vec3.begin()) << endl << endl;
 
   vector<int> vec4 = { 35, 40 };
   cout << "Search " << print_vector(vec4) << " in " << print_vector(vec2) << " => "
-    << *algorithms::search(vec2.begin(), vec2.end(), vec4.begin(), vec4.end()) << endl;
+    << *algorithms::search(vec2.begin(), vec2.end(), vec4.begin(), vec4.end()) << endl << endl;
 
-  cout << "Find 35 in " << print_vector(vec1) << " => " << *algorithms::find(vec1.begin(), vec1.end(), 35) << endl;
+  cout << "Find 35 in " << print_vector(vec1) << " => " << *algorithms::find(vec1.begin(), vec1.end(), 35) << endl << endl;
 
-  cout << "Find if 40 in " << print_vector(vec1) << " => " << *algorithms::find_if(vec1.begin(), vec1.end(), is_40) << endl;
+  cout << "Find if 40 in " << print_vector(vec1) << " => " << *algorithms::find_if(vec1.begin(), vec1.end(), is_40) << endl << endl;
 
   vector<int> vec5 = { 10, 20 };
   cout << "Copy " << print_vector(vec1) << " into " << print_vector(vec5) << " => ";
   algorithms::copy(vec1.begin(), vec1.end(), back_inserter(vec5));
-  cout << print_vector(vec5) << endl;
+  cout << print_vector(vec5) << endl << endl;
 
+  vector<int> vec6;
+  cout << "Copy " << print_vector(vec1) << " and remove 35 " << " => ";
+  algorithms::remove_copy(vec1.begin(), vec1.end(), back_inserter(vec6), 35);
+  cout << print_vector(vec6) << endl << endl;
   
+  vector<int> vec7;
+  cout << "Copy " << print_vector(vec1) << " and remove element if equal to 40 " << " => ";
+  algorithms::remove_copy_if(vec1.begin(), vec1.end(), back_inserter(vec7), is_40);
+  cout << print_vector(vec7) << endl << endl;
+
+  cout << "Remove from " << print_vector(vec5) << " elements not equal to 10 " << " => ";
+  cout << print_vector(vec5.begin(), algorithms::remove(vec5.begin(), vec5.end(), 10)) << endl << endl;
+
+  vector<int> vec8;
+  cout << "Transform " << print_vector(vec5) << " by detracting 5 from each element " << " => ";
+  algorithms::transform(vec5.begin(), vec5.end(), back_inserter(vec8), minus_5);
+  cout << print_vector(vec8) << endl << endl;
+
+  cout << "Partition " << print_vector(vec1) << " by condition \" divisible by 10 \"" << " => ";
+  algorithms::partition(vec1.begin(), vec1.end(), divisible_10);
+  cout << print_vector(vec1) << endl << endl;
+
+  cout << "Add " << print_vector(vec1) << " to 15" << " => " 
+    << algorithms::accumulate(vec1.begin(), vec1.end(), 15) << endl << endl;
 
   return 0;
 }
