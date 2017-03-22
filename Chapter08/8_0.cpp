@@ -37,7 +37,8 @@ int test_split()
   while (getline(cin, s))
     split(s, ostream_iterator<string>(cout, "\n"));
   return 0;
-}
+}
+
 
 void test_stream_iterators()
 {
@@ -45,7 +46,8 @@ void test_stream_iterators()
 
   vector<int> v;
   copy(istream_iterator<int>(cin), istream_iterator<int>(),
-    back_inserter(v));  cout << endl;
+    back_inserter(v));
+  cout << endl;
 
   copy(v.begin(), v.end(), ostream_iterator<int>(cout, " "));
   cout << endl;

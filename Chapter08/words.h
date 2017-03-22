@@ -1,18 +1,30 @@
 #ifndef GUARD_words_H
 #define GUARD_words_H
 
-#include <string>
 #include <algorithm>
+#include <iostream>
+#include <vector>
+#include <string>
+#include <map>
 
-bool space(char c)
-{
-  return isspace(c) != 0;
-}
+typedef std::vector<std::string> Rule;
+typedef std::vector<Rule> Rule_collection;
+typedef std::map<std::string, Rule_collection> Grammar;
 
-bool not_space(char c)
-{
-  return !isspace(c);
-}
+std::istream count_words(std::istream, std::ostream);
+std::vector<std::string> split(const std::string&);
+std::map<std::string, std::vector<int> > xref(std::istream&, std::vector<std::string> find_words(const std::string&) = split);
+bool space(char);
+bool not_space(char);
+bool bracketed(const std::string&);
+Grammar read_grammar(std::istream&);
+std::vector<std::string> gen_sentence(const Grammar&);
+void gen_aux(const Grammar&, const std::string&, std::vector<std::string>&);
+
+bool not_url_char(char);
+std::string::const_iterator url_beg(std::string::const_iterator, std::string::const_iterator);
+std::string::const_iterator url_end(std::string::const_iterator, std::string::const_iterator);
+std::vector<std::string> find_urls(const std::string&);
 
 template <class Out> // changed
 void split(const std::string& str, Out os) { // changed
