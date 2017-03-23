@@ -12,4 +12,13 @@ template<class L, class R, class O>
 O max(const L& left, const R& right)
 {
   return left > right ? left : right;
-}// there's no way for the implementation to know what type will be returned when// two different arguments types are usedint ex8_7(){  max<int, double, double>(5, 4.5);  return 0;}
+}
+
+// there's no way for the implementation to know what type will be returned when
+// two different arguments types are used
+// In the example below the return type is specified
+int ex8_7()
+{
+  max<int, double, double>(5, 4.5);
+  return 0;
+}
