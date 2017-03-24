@@ -7,8 +7,13 @@ Defining new types.
 #include "stdafx.h"
 
 #include "9_0.h"
+#include "9_1.h"
+#include "9_2.h"
+#include "9_3.h"
+#include "9_4.h"
+#include "9_5.h"
 
 int main()
 {
-    return ex9_0();
+    return ex9_5();
 }
