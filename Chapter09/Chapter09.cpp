@@ -12,8 +12,10 @@ Defining new types.
 #include "9_3.h"
 #include "9_4.h"
 #include "9_5.h"
+#include "9_6.h"
+#include "9_7.h"
 
 int main()
 {
-    return ex9_5();
+    return ex9_7();
 }
