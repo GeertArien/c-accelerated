@@ -18,29 +18,6 @@ using std::endl;
 #include <iterator>
 using std::end;
 
-#include <exception>
-using std::domain_error;
-
-#include <algorithm>
-using std::sort;
-
-template<class T, class In>
-T median(In begin, In end)
-{
-  if (begin == end)
-    throw domain_error("median of an empty container");
-
-  vector<T> v;
-
-  while (begin != end)
-    v.push_back(*begin++);
-
-  sort(v.begin(), v.end());
-
-  vector<T>::size_type mid = v.size() / 2;
-  return v.size() % 2 == 0 ? (v[mid] + v[mid - 1]) / 2 : v[mid];
-}
-
 int ex10_2()
 {
   double a_double[] = { 12.5, 16.3, 25.7 };
