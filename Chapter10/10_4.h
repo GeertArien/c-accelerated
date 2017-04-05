@@ -1,24 +1,29 @@
 #ifndef GUARD_10_4_H
 #define GUARD_10_4_H
 
+#include <string>
+
 class String_list {
 
 private:
 
-  char** l;
-  size_t size;
-  size_t max;
+  std::string *l;
+  std::string::size_type size;
+  std::string::size_type max;
 
   void resize();
 
 public:
 
-  String_list() : l(new char*[1]), size(0), max(1) {};
+  typedef std::string* iterator;
+
+  String_list() : l(new std::string[1]), size(0), max(1) {};
+  String_list(const String_list& src);
   ~String_list();
 
-  void push_back(const char*);
-  char** begin() { return l; }
-  char** end() { return l + size; };
+  void push_back(std::string);
+  std::string* begin() { return l; }
+  std::string* end() { return l + size; };
 };
 
 int ex10_4();

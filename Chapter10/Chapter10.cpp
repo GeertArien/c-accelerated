@@ -12,10 +12,11 @@ Managing memory and low-level data structures.
 #include "10_3.h"
 #include "10_4.h"
 #include "10_5.h"
+#include "10_6.h"
 
 int main()
 {
-  ex10_4();
+  ex10_6();
   return 0;
 }
 

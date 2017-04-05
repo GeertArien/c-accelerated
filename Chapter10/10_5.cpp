@@ -13,6 +13,9 @@ Write a bidirectional iterator for your String_list class.
 using std::cout;
 using std::endl;
 
+#include <string>
+using std::string;
+
 int ex10_5()
 {
   String_list str_list;
@@ -23,7 +26,7 @@ int ex10_5()
   str_list.push_back("four");
   str_list.push_back("five");
 
-  char** iter = str_list.begin();
+  String_list::iterator iter = str_list.begin();
 
   while (iter != str_list.end())
   {

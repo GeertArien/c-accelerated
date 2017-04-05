@@ -151,6 +151,7 @@
     <ClInclude Include="10_3.h" />
     <ClInclude Include="10_4.h" />
     <ClInclude Include="10_5.h" />
+    <ClInclude Include="10_6.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="student_info.h" />
     <ClInclude Include="targetver.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="10_3.cpp" />
     <ClCompile Include="10_4.cpp" />
     <ClCompile Include="10_5.cpp" />
+    <ClCompile Include="10_6.cpp" />
     <ClCompile Include="Chapter10.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

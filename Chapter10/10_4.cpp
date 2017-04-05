@@ -7,6 +7,9 @@ Write a class that implements a list that holds strings.
 #include "stdafx.h"
 #include "10_4.h"
 
+#include <string>
+using std::string;
+
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -17,40 +20,39 @@ using std::copy;
 #include <iterator>
 using stdext::checked_array_iterator;
 
+String_list::String_list(const String_list& src) {
+  *this = src;
+  l = new string[max];
+
+  for (string::size_type i = 0; i < size; i++)
+    l[i] = src.l[i];
+}
+
 String_list::~String_list()
 {
-  for (size_t i = 0; i < size; i++)
-    delete l[i];
-
-  delete l;
+  delete[] l;
 }
 
 void String_list::resize()
 {
   max *= 2;
 
-  char** copy = new char*[max];
+  string* copy = new string[max];
 
-  for (size_t i = 0; i < size; i++)
-  {
+  for (string::size_type i = 0; i < size; i++)
     copy[i] = l[i];
-  }
 
-  delete l;
+  delete[] l;
 
   l = copy;
 }
 
-void String_list::push_back(const char* str)
+void String_list::push_back(string str)
 {
   if (size == max)
     resize();
 
-  size_t length = strlen(str) + 1;
-  char* new_str = new char[length];
-  copy(str, str + length, checked_array_iterator<char*>(new_str, length));
-
-  l[size++] = new_str;
+  l[size++] = str;
 }
 
 int ex10_4()
@@ -63,7 +65,7 @@ int ex10_4()
   str_list.push_back("even more");
   str_list.push_back("yup");
 
-  char** iter = str_list.begin();
+  String_list::iterator iter = str_list.begin();
 
   while (iter != str_list.end())
     cout << *iter++ << endl;
