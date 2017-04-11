@@ -16,7 +16,7 @@ Managing memory and low-level data structures.
 
 int main()
 {
-  ex10_6();
+  ex10_4();
   return 0;
 }
 

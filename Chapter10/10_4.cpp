@@ -17,9 +17,6 @@ using std::endl;
 #include <algorithm>
 using std::copy;
 
-#include <iterator>
-using stdext::checked_array_iterator;
-
 String_list::String_list(const String_list& src) {
   *this = src;
   l = new string[max];
