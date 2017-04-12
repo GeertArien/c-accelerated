@@ -14,22 +14,6 @@ using std::endl;
 
 #include "vec.h"
 
-template<class T>
-ostream& print_vec(const Vec<T> v, ostream& os)
-{
-  if (v.size() > 0)
-  {
-    os << v[0];
-
-    for (Vec<T>::size_type i = 1; i < v.size(); i++)
-      os << ", " << v[i];
-
-    os << endl;
-  }
-
-  return os;
-}
-
 int ex11_0()
 {
   Vec<int> v1(5, 5);
@@ -43,8 +27,8 @@ int ex11_0()
   for (Vec<int>::size_type i = 0; i < 10; i++)
     v2.push_back(10);
 
-  print_vec(v1, cout);
-  print_vec(v2, cout);
+  v1.print_vec(cout);
+  v2.print_vec(cout);
 
   return 0;
 }

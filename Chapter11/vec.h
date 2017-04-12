@@ -35,6 +35,11 @@ public:
   iterator end() { return avail; }
   const_iterator end() const { return avail; }
 
+  std::ostream& print_vec(std::ostream&);
+  void clear() { destroy(); };
+  iterator erase(iterator it) { return destroy(it); };
+  iterator erase(iterator b, iterator e) { return destroy(b, e); };
+
 private:
 
   iterator data; // first element in the Vec
@@ -49,6 +54,11 @@ private:
 
   // destroy the elements in the array and free the memory
   void uncreate();
+
+  // destroy the elements in the array
+  void destroy();
+  iterator destroy(iterator);
+  iterator destroy(iterator, iterator);
 
   // support functions for push_back
   void grow();
@@ -88,7 +98,9 @@ void Vec<T>::create(const_iterator i, const_iterator j)
   data = alloc.allocate(j - i);
   stdext::checked_array_iterator<T*> checked_data(data, (j - i));
   limit = avail = (std::uninitialized_copy(i, j, checked_data))._Unchecked();
-}template <class T> void Vec<T>::uncreate()
+}
+
+template <class T> void Vec<T>::uncreate()
 {
   if (data) {
     // destroy (in reverse order) the elements that were constructed
@@ -100,7 +112,9 @@ void Vec<T>::create(const_iterator i, const_iterator j)
   }
   // reset pointers to indicate that the Vec is empty again
   data = limit = avail = 0;
-}template <class T> void Vec<T>::grow()
+}
+
+template <class T> void Vec<T>::grow()
 {
   // when growing, allocate twice as much space as currently in use
   size_type new_size = std::max(2 * (limit - data), ptrdiff_t(1));
@@ -120,5 +134,23 @@ void Vec<T>::create(const_iterator i, const_iterator j)
 template <class T> void Vec<T>::unchecked_append(const T& val)
 {
   alloc.construct(avail++, val);
-}
+}
+
+template<class T>
+std::ostream& Vec<T>::print_vec(std::ostream& os)
+{
+  if (avail - data > 0)
+  {
+    iterator iter = data;
+
+    os << *iter++;
+
+    while (iter != avail)
+      os << ", " << *iter++;
+
+    os << std::endl;
+  }
+  return os;
+}
+
 #endif // !GUARD_vec_H
