@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{5A679E23-9D5F-4DC0-96FB-1EFFEF0B0A71}</ProjectGuid>
+    <ProjectGuid>{0F9983FC-4C36-4D38-A386-AFCAF3DFFE33}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Chapter11</RootNamespace>
+    <RootNamespace>Chapter12</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -145,32 +145,26 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="11_0.h" />
-    <ClInclude Include="11_5.h" />
-    <ClInclude Include="11_6.h" />
-    <ClInclude Include="11_7.h" />
-    <ClInclude Include="11_8.h" />
-    <ClInclude Include="11_9.h" />
+    <ClInclude Include="12_0.h" />
+    <ClInclude Include="12_1.h" />
+    <ClInclude Include="12_2.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="student_info.h" />
+    <ClInclude Include="str.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="vec.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="11_0.cpp" />
-    <ClCompile Include="11_5.cpp" />
-    <ClCompile Include="11_6.cpp" />
-    <ClCompile Include="11_7.cpp" />
-    <ClCompile Include="11_8.cpp" />
-    <ClCompile Include="11_9.cpp" />
-    <ClCompile Include="Chapter11.cpp" />
+    <ClCompile Include="12_0.cpp" />
+    <ClCompile Include="12_1.cpp" />
+    <ClCompile Include="12_2.cpp" />
+    <ClCompile Include="Chapter12.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="student_info.cpp" />
+    <ClCompile Include="str.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

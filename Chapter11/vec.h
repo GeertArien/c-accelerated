@@ -23,9 +23,9 @@ public:
   T& operator[](size_type i) { return data[i]; }
   const T& operator[](size_type i) const { return data[i]; }
 
-  void push_back(const T& t) {
+  void push_back(const T& t, bool double_grow = true) {
     if (avail == limit)
-      grow();
+      grow(double_grow);
     unchecked_append(t);
   }
 
@@ -61,7 +61,7 @@ private:
   iterator destroy(iterator, iterator);
 
   // support functions for push_back
-  void grow();
+  void grow(bool);
 
   void unchecked_append(const T&);
 };
@@ -114,10 +114,18 @@ template <class T> void Vec<T>::uncreate()
   data = limit = avail = 0;
 }
 
-template <class T> void Vec<T>::grow()
+template <class T> void Vec<T>::grow(bool double_grow)
 {
-  // when growing, allocate twice as much space as currently in use
-  size_type new_size = std::max(2 * (limit - data), ptrdiff_t(1));
+  size_type new_size;
+
+  if (double_grow)
+  {
+    // when growing, allocate twice as much space as currently in use
+    new_size = std::max(2 * (limit - data), ptrdiff_t(1));
+  }
+  else
+    new_size = limit - data + 1;
+    
   // allocate new space and copy existing elements to the new space
   iterator new_data = alloc.allocate(new_size);
   stdext::checked_array_iterator<T*> checked_data(new_data, new_size);

@@ -12,6 +12,7 @@ using std::cout;
 using std::endl;
 
 #include <string>
+using std::string;
 
 int ex11_8()
 {
@@ -22,8 +23,26 @@ int ex11_8()
 
   LList<int>::iterator iter = list.begin();
 
+  cout << *++iter << endl;
+  cout << *--iter << endl;
+
   while (iter != list.end())
     cout << *iter++ << endl;
+
+  LList<string> stringlist(5, "test");
+  LList<string> stringlist_copy = stringlist;
+  LList<string>::iterator listIter = stringlist.begin();
+
+  *listIter = "first";
+
+  while (listIter != stringlist.end())
+    cout << *listIter++ << endl;
+
+  if (stringlist_copy.size() > 0) {
+    listIter = stringlist_copy.begin();
+    while (listIter != stringlist.end())
+      cout << *listIter++ << endl;
+  }
 
   return 0;
 }
