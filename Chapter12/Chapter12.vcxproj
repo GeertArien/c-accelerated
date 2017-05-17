@@ -147,10 +147,19 @@
   <ItemGroup>
     <ClInclude Include="12_0.h" />
     <ClInclude Include="12_1.h" />
+    <ClInclude Include="12_10.h" />
+    <ClInclude Include="12_11.h" />
+    <ClInclude Include="12_12.h" />
+    <ClInclude Include="12_13.h" />
+    <ClInclude Include="12_14.h" />
     <ClInclude Include="12_2.h" />
     <ClInclude Include="12_3.h" />
     <ClInclude Include="12_4.h" />
     <ClInclude Include="12_5.h" />
+    <ClInclude Include="12_6.h" />
+    <ClInclude Include="12_7.h" />
+    <ClInclude Include="12_8.h" />
+    <ClInclude Include="12_9.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="str.h" />
     <ClInclude Include="str_c.h" />
@@ -160,10 +169,19 @@
   <ItemGroup>
     <ClCompile Include="12_0.cpp" />
     <ClCompile Include="12_1.cpp" />
+    <ClCompile Include="12_10.cpp" />
+    <ClCompile Include="12_12.cpp" />
+    <ClCompile Include="12_13.cpp" />
+    <ClCompile Include="12_14.cpp" />
     <ClCompile Include="12_2.cpp" />
     <ClCompile Include="12_3.cpp" />
     <ClCompile Include="12_4.cpp" />
     <ClCompile Include="12_5.cpp" />
+    <ClCompile Include="12_6.cpp" />
+    <ClCompile Include="12_7.cpp" />
+    <ClCompile Include="12_8.cpp" />
+    <ClCompile Include="12_9.cpp" />
+    <ClCompile Include="12__11.cpp" />
     <ClCompile Include="Chapter12.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

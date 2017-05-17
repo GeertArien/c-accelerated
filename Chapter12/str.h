@@ -13,6 +13,8 @@ class Str {
 public:
 
   typedef Vec<char>::size_type size_type;
+  typedef Vec<char>::iterator iterator;
+  typedef Vec<char>::const_iterator const_iterator;
 
   // default constructor; create an empty Str
   Str() { }
@@ -26,9 +28,7 @@ public:
   }
 
   // create a Str from the range denoted by iterators b and e
-  template<class In> Str(In b, In e) {
-    std::copy(b, e, std::back_inserter(data));
-  }
+  template<class In> Str(In b, In e) : data(b, e) { }
 
   size_type size() const { return data.size(); }
 
@@ -41,6 +41,13 @@ public:
     return *this;
   }
 
+  template <class In>
+  void insert(iterator position, In first, In last) { data.insert(position, first, last); };
+
+  iterator begin() { return data.begin(); };
+  const_iterator begin() const { return data.begin(); };
+  iterator end() { return data.end(); };
+  const_iterator end() const { return data.end(); };
 
 private:
 

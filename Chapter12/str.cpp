@@ -18,6 +18,7 @@ istream& operator >> (istream& is, Str& s)
   s.data.clear();
   // read and discard leading whitespace
   char c;
+  // istream::get() checks inputstream for eof
   while (is.get(c) && isspace(c))
     ; // nothing to do, except testing the condition
       // if still something to read, do so until next whitespace character

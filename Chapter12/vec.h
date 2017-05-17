@@ -17,6 +17,7 @@ public:
   Vec() { create(); }
   explicit Vec(size_type n, const T& t = T()) { create(n, t); }
   Vec(const Vec& v) { create(v.begin(), v.end()); }
+  template<class In> Vec(In b, In e) { create(b, e); }
 
   Vec& operator=(const Vec&);
   ~Vec() { uncreate(); }
@@ -40,6 +41,12 @@ public:
   iterator erase(iterator it) { return destroy(it); };
   iterator erase(iterator b, iterator e) { return destroy(b, e); };
 
+  template <class In>
+  void insert(iterator position, In first, In last) { insert_elements(position, first, last); };
+
+  template <class In>
+  void assign(In first, In last) { assign_elements(first, last); };
+
 private:
 
   iterator data; // first element in the Vec
@@ -51,6 +58,7 @@ private:
   void create();
   void create(size_type, const T&);
   void create(const_iterator, const_iterator);
+  template<class In> void create(In, In);
 
   // destroy the elements in the array and free the memory
   void uncreate();
@@ -64,6 +72,12 @@ private:
   void grow(bool);
 
   void unchecked_append(const T&);
+
+  template <class In>
+  void insert_elements(iterator, In, In);
+
+  template <class In>
+  void assign_elements(In, In);
 };
 
 
@@ -98,6 +112,15 @@ void Vec<T>::create(const_iterator i, const_iterator j)
   data = alloc.allocate(j - i);
   stdext::checked_array_iterator<T*> checked_data(data, (j - i));
   limit = avail = (std::uninitialized_copy(i, j, checked_data))._Unchecked();
+}
+
+template<class T>
+template<class In>
+void Vec<T>::create(In b, In e)
+{
+  data = alloc.allocate(e - b);
+  stdext::checked_array_iterator<T*> checked_data(data, (e - b));
+  limit = avail = (std::uninitialized_copy(b, e, checked_data))._Unchecked();
 }
 
 template <class T> void Vec<T>::uncreate()
@@ -211,6 +234,33 @@ typename Vec<T>::iterator Vec<T>::destroy(iterator b, iterator e)
     avail = b;
   }
   return avail;
+}
+
+template <class T>
+template <class In>
+void Vec<T>::insert_elements(iterator pos, In first, In last)
+{
+  Vec<T> tail(pos, avail);
+
+  destroy(pos, avail);
+
+  In iter1 = first;
+
+  while (iter1 != last)
+    push_back(*iter1++);
+
+  iterator iter2 = tail.begin();
+
+  while (iter2 != tail.end())
+    push_back(*iter2++);
+}
+
+template <class T>
+template <class In>
+void Vec<T>::assign_elements(In first, In last)
+{
+  uncreate();
+  create(first, last);
 }
 
 #endif // !GUARD_vec_H

@@ -7,10 +7,14 @@
 class Str_c {
 
   friend std::istream& operator >> (std::istream&, Str_c&);
+  friend Str_c operator+(const char*, const Str_c&);
+  friend std::istream& getline(std::istream&, Str_c&);
 
 public:
 
   typedef size_t size_type;
+  typedef char* iterator;
+  typedef const char* const_iterator;
 
   // default constructor; create an empty Str
   Str_c() { create(0, '\0'); }
@@ -36,15 +40,27 @@ public:
   char& operator[](size_t i) { return d[i]; }
   const char& operator[](size_t i) const { return d[i]; }
 
+  Str_c& operator+=(const char* cp) {
+    append(cp, strlen(cp));
+    return *this;
+  }
+
   Str_c& operator+=(const Str_c& s) {
     append(s);
     return *this;
   }
 
+  operator void*() const { return is_not_empty(); };
+
   const char* c_str() const { return d; }
   const char* data() const { return d; }
 
   size_t copy(char* p, size_t n) const { return copy_characters(p, n); }
+
+  iterator begin() { return d; };
+  const_iterator begin() const { return d; };
+  iterator end() { return d + size(); };
+  const_iterator end() const { return d + size(); };
 
 private:
 
@@ -71,16 +87,28 @@ private:
 
   void append(const Str_c&);
   void append(const char*, const size_t);
+  void prepend(const char*, const size_t);
   void append(const char);
 
   size_t copy_characters (char*, size_t) const;
 
+  void* is_not_empty() const
+  {
+    if (size() > 0)
+      return d;
+    else
+      return 0;
+  }
 };
 
-std::istream& operator >> (std::istream&, Str_c&);
+std::istream& operator>>(std::istream&, Str_c&);
 std::ostream& operator<<(std::ostream&, const Str_c&);
 
+std::istream& getline(std::istream&, Str_c&);
+
 Str_c operator+(const Str_c&, const Str_c&);
+Str_c operator+(const Str_c&, const char*);
+Str_c operator+(const char*, const Str_c&);
 
 inline bool operator== (const Str_c& lhs, const Str_c& rhs)
 {
