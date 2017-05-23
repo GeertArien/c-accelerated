@@ -1,28 +1,48 @@
 #ifndef GUARD_student_info_H
 #define GUARD_student_info_H
 
+#define ANNOTATE 0
+
 #include <iostream>
 #include <vector>
 #include <exception>
-
+#include <string>
+#include <algorithm>
 
 class Core {
 
   friend class Student_info;
+  friend class Audit;
 
 public:
 
   // default constructor for Core
-  Core() : midterm(0), final(0) { }
+  Core() : midterm(0), final(0) { 
+#if ANNOTATE == 1
+    std::cerr << "Core::Core()" << std::endl;
+#endif
+  }
 
   // build a Core from an istream
-  Core(std::istream& is) { read(is); }
+  Core(std::istream& is) { 
+#if ANNOTATE == 1
+    std::cerr << "Core::Core(istream&)" << std::endl;
+#endif
+    read(is);
+  }
 
   virtual ~Core() { }
 
   std::string name() const;
   virtual double grade() const;
+  std::string letter_grade() const;
   virtual std::istream& read(std::istream&);
+
+  bool valid() const { return !homework.empty(); }
+  virtual bool requirements_met() const
+  {
+    return std::find(homework.begin(), homework.end(), 0.0) == homework.end();
+  }
 
 protected:
   virtual Core* clone() const { return new Core(*this); }
@@ -36,16 +56,31 @@ private:
 };
 
 
+
 class Grad : public Core {
 
 public:
 
   // both constructors implicitly use Core::Core() to initialize the base part
-  Grad() : thesis(0) { }
-  Grad(std::istream& is) { read(is); }
+  Grad() : thesis(0) { 
+#if ANNOTATE == 1
+    std::cerr << "Grad::Grad()" << std::endl;
+#endif
+  }
+  Grad(std::istream& is) { 
+#if ANNOTATE == 1
+    std::cerr << "Grad::Grad(istream&)" << std::endl;
+#endif
+    read(is); 
+  }
 
   double grade() const;
   std::istream& read(std::istream&);
+
+  bool requirements_met() const
+  {
+    return Core::requirements_met() && thesis != 0.0;
+  }
 
 protected:
 
@@ -54,6 +89,7 @@ protected:
 private:
   double thesis;
 };
+
 
 
 class Student_info {

@@ -16,14 +16,19 @@ using std::min;
 #include <exception>
 using std::domain_error;
 
+#include "13_6.h"
+#include "13_7.h"
 
 istream& Student_info::read(istream& is) {
   delete cp; // delete previous object, if any
   char ch;
   is >> ch; // get record type
-  if (ch == 'U') {
+  if (ch == 'U')
     cp = new Core(is);
-  }
+  else if (ch == 'C')
+    cp = new Credit(is);
+  else if (ch == 'A')
+    cp = new Audit(is);
   else {
     cp = new Grad(is);
   }
@@ -47,10 +52,20 @@ Student_info& Student_info::operator=(const Student_info& s)
   return *this;
 }
 
-string Core::name() const { return n; }
+string Core::name() const { 
+#if ANNOTATE == 1
+  std::cerr << "Core::name()" << std::endl;
+#endif
+  
+  return n;
+}
 
 double Core::grade() const
 {
+#if ANNOTATE == 1
+  std::cerr << "Core::grade()" << std::endl;
+#endif
+
   return ::grade(midterm, final, homework);
 }
 
@@ -78,7 +93,32 @@ istream& Grad::read(istream& in)
 
 double Grad::grade() const
 {
+#if ANNOTATE == 1
+  std::cerr << "Grad::grade()" << std::endl;
+#endif
+
   return min(Core::grade(), thesis);
+}
+
+string Core::letter_grade() const
+{
+  static const double numbers[] = {
+    97, 94, 90, 87, 84, 80, 77, 74, 70, 60, 0
+  };
+
+  static const char* const letters[] = {
+    "A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D", "F"
+  };
+
+  static const size_t ngrades = sizeof(numbers) / sizeof(*numbers);
+
+  double result = grade();
+
+  for (size_t i = 0; i < ngrades; ++i) {
+    if (result >= numbers[i])
+      return letters[i];
+  }
+  return "?\?\?";
 }
 
 bool compare(const Core& c1, const Core& c2)

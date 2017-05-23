@@ -146,12 +146,28 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="13_0.h" />
+    <ClInclude Include="13_1.h" />
+    <ClInclude Include="13_2.h" />
+    <ClInclude Include="13_3.h" />
+    <ClInclude Include="13_4.h" />
+    <ClInclude Include="13_5.h" />
+    <ClInclude Include="13_6.h" />
+    <ClInclude Include="13_7.h" />
+    <ClInclude Include="13_8.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="student_info.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="13_0.cpp" />
+    <ClCompile Include="13_1.cpp" />
+    <ClCompile Include="13_2.cpp" />
+    <ClCompile Include="13_3.cpp" />
+    <ClCompile Include="13_4.cpp" />
+    <ClCompile Include="13_5.cpp" />
+    <ClCompile Include="13_6.cpp" />
+    <ClCompile Include="13_7.cpp" />
+    <ClCompile Include="13_8.cpp" />
     <ClCompile Include="Chapter13.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
