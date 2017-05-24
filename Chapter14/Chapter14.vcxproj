@@ -19,9 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0F9983FC-4C36-4D38-A386-AFCAF3DFFE33}</ProjectGuid>
+    <ProjectGuid>{B601B26A-AA8C-444B-9D8E-C7529C18A55D}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Chapter12</RootNamespace>
+    <RootNamespace>Chapter14</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -145,44 +145,33 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="12_0.h" />
-    <ClInclude Include="12_1.h" />
-    <ClInclude Include="12_10.h" />
-    <ClInclude Include="12_11.h" />
-    <ClInclude Include="12_12.h" />
-    <ClInclude Include="12_13.h" />
-    <ClInclude Include="12_14.h" />
-    <ClInclude Include="12_2.h" />
-    <ClInclude Include="12_3.h" />
-    <ClInclude Include="12_4.h" />
-    <ClInclude Include="12_5.h" />
-    <ClInclude Include="12_6.h" />
-    <ClInclude Include="12_7.h" />
-    <ClInclude Include="12_8.h" />
-    <ClInclude Include="12_9.h" />
+    <ClInclude Include="14_0.h" />
+    <ClInclude Include="14_1.h" />
+    <ClInclude Include="14_2.h" />
+    <ClInclude Include="14_3.h" />
+    <ClInclude Include="14_4.h" />
+    <ClInclude Include="14_5.h" />
+    <ClInclude Include="14_6.h" />
+    <ClInclude Include="handle.h" />
+    <ClInclude Include="ptr.h" />
+    <ClInclude Include="ptr_r.h" />
+    <ClInclude Include="ref_counter.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="str.h" />
-    <ClInclude Include="str_c.h" />
+    <ClInclude Include="student_info.h" />
+    <ClInclude Include="student_info_p.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="vec.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="12_0.cpp" />
-    <ClCompile Include="12_1.cpp" />
-    <ClCompile Include="12_10.cpp" />
-    <ClCompile Include="12_12.cpp" />
-    <ClCompile Include="12_13.cpp" />
-    <ClCompile Include="12_14.cpp" />
-    <ClCompile Include="12_2.cpp" />
-    <ClCompile Include="12_3.cpp" />
-    <ClCompile Include="12_4.cpp" />
-    <ClCompile Include="12_5.cpp" />
-    <ClCompile Include="12_6.cpp" />
-    <ClCompile Include="12_7.cpp" />
-    <ClCompile Include="12_8.cpp" />
-    <ClCompile Include="12_9.cpp" />
-    <ClCompile Include="12_11.cpp" />
-    <ClCompile Include="Chapter12.cpp" />
+    <ClCompile Include="14_0.cpp" />
+    <ClCompile Include="14_1.cpp" />
+    <ClCompile Include="14_2.cpp" />
+    <ClCompile Include="14_3.cpp" />
+    <ClCompile Include="14_4.cpp" />
+    <ClCompile Include="14_5.cpp" />
+    <ClCompile Include="14_6.cpp" />
+    <ClCompile Include="Chapter14.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -190,7 +179,8 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="str.cpp" />
-    <ClCompile Include="str_c.cpp" />
+    <ClCompile Include="student_info.cpp" />
+    <ClCompile Include="student_info_p.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
