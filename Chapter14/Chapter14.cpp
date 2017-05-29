@@ -12,10 +12,11 @@ Managing memory (almost) automatically.
 #include "14_3.h"
 #include "14_4.h"
 #include "14_5.h"
+#include "14_6.h"
 
 int main()
 {
-  ex14_5();
+  ex14_6();
 
   return 0;
 }
