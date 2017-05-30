@@ -10,7 +10,7 @@ from Chapter 5 and the split functions from §5.6/87 and §6.1.1/103.
 #include "12_11.h"
 
 #include <vector>
-using std::vector;;
+using std::vector;
 
 #include <iostream>
 using std::cin;
