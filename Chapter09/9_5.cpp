@@ -52,9 +52,9 @@ ostream& Grader::generate_report(ostream& os) const
   iter = students.begin();
   while (iter != students.end())
   {
-    os << iter++->name()
+    os << iter->name()
       << string(maxlen + 1 - iter->name().size(), ' ')
-      << (iter->passing() ? 'P' : 'F') << endl;
+      << (iter++->passing() ? 'P' : 'F') << endl;
   }
 
   return os;
